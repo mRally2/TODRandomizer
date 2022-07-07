@@ -27,6 +27,7 @@
       <li>The replacement of the string "PRESS ENTER (TO BEGIN)" works only if you launch the game with keyboard controls</li>
       <li>San Francisco Escape doesn’t have a night setting available in the randomizer due to not being implemented by the original developers</li>
       <li>Las Vegas Rival Race, Las Vegas Alley Escape, and Chicago Downtown Escape don't have a time of day change for the randomizer due to VisEnv overlaps</li>
+      <li>Las Vegas & Chicago Downtown Car Select cutscenes will not get the time of day randomized due to technical problems</li>
       <li>Out of bounds and wrong way detection is set to off since some of the time of day settings change assets of the map which leads to slightly different patterns<br><br></li>
    </ul>
    <p><strong>DISCLAIMER</strong></p>
