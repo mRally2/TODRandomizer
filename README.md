@@ -34,7 +34,7 @@
    <hr>
    <ul>
       <li>Enabling Night Run disables the Time Of Day Randomizer and viceversa</li>
-      <li>Out of Bounds and Wrong Way timers have been disabled for the Stage 10 New Jersey Junkyard event</li>
+      <li>Out of Bounds and Wrong Way timers have been disabled for the New Jersey Junkyard Stage 10 event</li>
       <li>Your antivirus might detect it as a threat. It’s a false positive. The tool has been built using a custom compiled version of Cheat Engine 7.3</li>
       <li>I am not responsible for any damage caused to your system by this tool so use it at your own risk</li>
       <li>I do not own the rights of the art seen on the cover and thumbnail of this product. It’s a fan art for illustrating the purpose of the product itself. All rights reserved to Electronic Arts Inc.</li>
