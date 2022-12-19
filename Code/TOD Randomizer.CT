@@ -1,0 +1,2153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="38">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>715</ID>
+      <Description>"TOD RANDOMIZER"</Description>
+      <Options moActivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Activate</Action>
+          <Keys>
+            <Key>119</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>712</ID>
+          <Description>"TIME OF DAY HOOK"</Description>
+          <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+alloc(timeofday,$500)
+registersymbol(timeofday)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+push ebx
+lea ebx,[eax+64]
+mov [timeofday],ebx
+pop ebx
+jmp originalcode
+
+originalcode:
+mov ecx,[eax+64]
+push 01
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+59BF25:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+59BF25:
+mov ecx,[eax+64]
+push 01
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1078</ID>
+              <Description>"Time Of Day Preset"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>timeofday</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>999</ID>
+          <Description>"SEQUENCE HOOK"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+alloc(sequenceHook,$500)
+registersymbol(sequenceHook)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem:
+push ebx
+lea ebx,[edx+60]
+mov [sequenceHook],ebx
+pop ebx
+jmp originalcode
+
+originalcode:
+mov ecx,[edx+60]
+push 01
+
+exit:
+jmp returnhere
+
+"Need For Speed The Run.exe"+E97C92:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(*)
+unregistersymbol(*)
+"Need For Speed The Run.exe"+E97C92:
+mov ecx,[edx+60]
+push 01
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1001</ID>
+              <Description>"String Reference"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>sequenceHook</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>437</ID>
+          <Description>"CHALLENGE SERIES RANDOMIZER"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+getLuaEngine().cbShowOnPrint.Checked=false
+getLuaEngine().hide()
+[ENABLE]
+math.randomseed(os.time())
+print "Challenge Series timer enabled"
+function challengeSeries()
+    if readPointer("[[[028823B4]+3C]+14]+64") ~= nil then
+        local guid = getAddress("[[[028823B4]+3C]+14]+64")-0x68
+        if readInteger(guid) == 3969471516 then --What a Rush
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3905447374 then --Urban Muscle
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2656397251 then --The Pretenders
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2897143988 then --Time Hunter
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3115208195 then --Midnight Rush
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3059479096 then --Don’t Drive Junk
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 2
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1763627507 then --Mountain Man
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 156658199 then --Offroad Mayhem
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3835123886 then --Ford Challenge
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1072480740 then --Tioga Run
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2134719641 then --King Of The Road
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2344888867 then --Dry Heat
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 119455665 then --Outrun
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1490425049 then --Vegas Velocity
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2190611244 then --Sin City Street Race
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1059026347 then --Lotus Battle
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2234446290 then --Feel The Heat
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3686337397 then --Hell On Wheels
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3927168791 then --The Edge
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 969960617 then --Rally Challenge
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2629200658 then --Dust In My Eye
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1794521110 then --Snow Battle
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3749759140 then --Ascension
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 4167843956 then --Double Black Diamond
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 4259316566 then --Black Mountain
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1504994108 then --Just Drive
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3465724553 then --Dirty Drifter
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1691124658 then --Road Runner
+            local res = math.random(1,5)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            elseif res == 4 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 320218905 then --The Gap
+            local res = math.random(1,5)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            elseif res == 4 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 692073587 then --NFS Edition Showdown
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3095777409 then --Locals Only
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2722275898 then --Hard Action
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1358304694 then --Oncoming
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3354619962 then --Lower the Wacker
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1382978203 then --GT-R SpecV Showdown
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 386720912 then --Street Legal
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1190250175 then --Lakeshore Battle
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1895859015 then --Interstate Loop
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2833054987 then --Industrial Run
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 906430709 then --Tunnels and Trains
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 119691382 then --Industrial Strength
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 665564811 then --Hazard County
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2475630668 then --Traffic Jam
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3649528539 then --Porsche Attack
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3108061524 then --Lost Serpent Pass
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2208519834 then --Panic Attack
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1017959682 then --Drive Harder
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3368865327 then --The Jersey Double Back
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 511196027 then --The Situation
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3643726335 then --Drive Hard
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3922471529 then --Drive Hard With A Vengeance
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3743660249 then --Live Free Or Drive Hard
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2673324721 then --The Final Event
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3867126210 then --Street Of San Francisco
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3952990312 then --The Gauntlet
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2403057324 then --Raw Power
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1090349791 then --Filtered For Success
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2203963555 then --Death Valley Run
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2749846213 then --Battle In The Desert
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3174878300 then --Make Tracks
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 232080061 then --The Duel
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3016250220 then --Porsche Run
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 383221778 then --San Francisco Challenge
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1014864742 then --Supercar Descent
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2187322303 then --Race of Races
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1615672593 then --Live The Underground
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1088884998 then --Fast Eddie
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1348262140 then --The Return Of Cross
+            local res = math.random(1,5)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            elseif res == 4 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3882353303 then --Very Cross
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2869384708 then --Cross Strikes Back
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1419972188 then --The Most Wanted
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1442891702 then --Unstoppable Force
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1385274441 then --Razor’s Edge
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 1762790502 then --I’m On A Horse
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 801442788 then --Champion
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3174481921 then --Swagger
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 2223360019 then --Tunnel of Pain
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        elseif readInteger(guid) == 3127775154 then --**CUT**
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[[[028823B4]+3C]+14]+64", res)
+        end
+    end
+end
+
+csr = createTimer(nil)
+timer_onTimer(csr,challengeSeries)
+timer_setInterval(csr, 1)
+timer_setEnabled(csr, true)
+
+
+[DISABLE]
+timer_setEnabled(csr, false)
+print "Challenge Series timer disabled"
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>714</ID>
+          <Description>"STORY MODE RANDOMIZER"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+getLuaEngine().cbShowOnPrint.Checked=false
+getLuaEngine().hide()
+addresslist = getAddressList()
+CheatEntry_3 = addresslist_getMemoryRecordByDescription(addresslist,[[DISABLE RESET OOB]])
+CheatEntry_4 = addresslist_getMemoryRecordByDescription(addresslist,[[WRONG WAY RESPAWN DISABLE]])
+[ENABLE]
+math.randomseed(os.time())
+print "Story Mode timer enabled"
+function TODLevels()
+    if readInteger("[[[[[[02A858B0]+88]+38]+D0]+14C]+8]+AEB") == nil then --EVERY NEW EVENT INSTANCE
+       memoryrecord_unfreeze(CheatEntry_3)
+       memoryrecord_unfreeze(CheatEntry_4)
+    end
+    --LAS VEGAS &amp; CHICAGO DOWNTOWN CAR SELECT WILL NOT GET RANDOMIZED
+    if readPointer("[[[027147B0]+2EC]+180]+64") ~= nil then
+       local guid = getAddress("[[[027147B0]+2EC]+180]+64")-0x68
+       if readInteger(guid) == 2671717031 then --Car Crusher
+          local res = math.random(1,4)
+          if res == 1 then
+              res = 0
+          elseif res == 2 then
+              res = 1
+          elseif res == 3 then
+              res = 2
+          else
+              res = 4
+          end
+          writeInteger("[[[027147B0]+2EC]+180]+64",res)
+          if readPointer("[[[00CE8664]+90]+29C]+64") ~= nil then --New Jersey Junkward
+            if res == 1 then
+                writeInteger("[[[00CE8664]+90]+29C]+64",8)
+            else
+                writeInteger("[[[00CE8664]+90]+29C]+64",res)
+            end
+          else
+              print "New Jersey Junkward pointer is NULL"
+          end
+       end
+    end
+    if readPointer("[timeofday]") ~= nil then
+        local guid = getAddress("[timeofday]")-0x68
+        if readInteger(guid) == 2702358496 then --Get Outta San Francisco
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 3
+            end
+            writeInteger("[timeofday]", res) --NIGHT TOD IS NOT IMPLEMENTED
+        elseif readInteger(guid) == 1170798514 then --Altamont Pass
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 748579042 then --Altamont Pass Reverse
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 996230524 then --Yosemite Approach A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2454337956 then --Yosemite Approach Reverse B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 4101321974 then --Yosemite South A
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1599632309 then --Yosemite South B
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 536243661 then --Sierra Pass B
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1836275362 then --Desert Hills
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3640908374 then --Death Valley A
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3308825217 then --Death Valley B
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2494877324 then --Las Vegas East A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            --writeInteger("[timeofday]", res) --TOD NOT CHANGING DURING CUTSCENE BECAUSE OF VISENV OVERLAPPING
+        elseif readInteger(guid) == 187022175 then --Las Vegas East B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2786791931 then --Las Vegas East Mini
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            elseif res == 3 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2567984127 then --Desert Hills Rev A
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3720932394 then --Death Valley Reverse
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1086584321 then --Desert Hills Rev B
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 7
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3533805161 then --Million Dollar HWY A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2569133557 then --Million Dollar HWY B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1979857418 then --Mountain Interstate Rev
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 445415868 then --Independence Pass B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1581736881 then --Montain Interstate
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3335861631 then --Independence Pass A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2561852078 then --Indepenence Pass C
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2228323699 then --New Jersey Ind Rev
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 148619112 then --Plains Interstate
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3247358286 then --Buffalo Gap
+            local res = math.random(1,5)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            elseif res == 4 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 95062145 then --Buffalo Gap Rev
+            local res = math.random(1,5)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            elseif res == 4 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2678784262 then --Plains Interstate Rev
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3432517482 then --Rural Farms
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2614530869 then --Rural Highway
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1005996079 then --Chicago Interstate
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1130647398 then --Chicago Downtown Mini
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            --writeInteger("[timeofday]", res) --TOD NOT CHANGING DURING CUTSCENE BECAUSE OF VISENV OVERLAPPING
+        elseif readInteger(guid) == 1880322147 then --Roof to Alley
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            --writeInteger("[timeofday]", res) --TOD NOT CHANGING DURING CUTSCENE BECAUSE OF VISENV OVERLAPPING
+        elseif readInteger(guid) == 2641126162 then --Chicago Downtown Heli Chase
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            --writeInteger("[timeofday]", res) --TOD NOT CHANGING DURING CUTSCENE BECAUSE OF VISENV OVERLAPPING
+        elseif readInteger(guid) == 250901999 then --Trapped with Train
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            --writeInteger("[timeofday]", res) --TOD NOT CHANGING DURING CUTSCENE BECAUSE OF VISENV OVERLAPPING
+        elseif readInteger(guid) == 2024388306 then --Chicago Downtown After Car Select
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1371379625 then --Chicago Lake Shore B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1924973096 then -- Chicago Interstate Rev
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2740223046 then --Chicago Lake Shore A
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 571722006 then --Chicago Industrial Action Level
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3592946720 then --Rural Farms Rev
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3308043497 then --Rural Highway Rev
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 3
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3504851546 then --Smoky Mountain Rev A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 601421103 then --Smoky Mountain Rev B
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 2872627479 then --Smoky Mountain A
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3488452864 then --Chicago Interstate
+            local res = math.random(1,3)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 4
+            else
+                res = 5
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1080972529 then --New Jersey
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 4
+                memoryrecord_freeze(CheatEntry_3) --WE DISABLE OOB RESET
+                memoryrecord_freeze(CheatEntry_4) --WE DISABLE WRONG WAY RESET
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3720273376 then --New Jersey Rev
+            local res = math.random(1,4)
+            if res == 1 then
+                res = 0
+            elseif res == 2 then
+                res = 1
+            elseif res == 3 then
+                res = 2
+            else
+                res = 8
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 3732571019 then --New York A
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        elseif readInteger(guid) == 1177725796 then --New York B
+            local res = math.random(1,2)
+            if res == 1 then
+                res = 0
+            else
+                res = 4
+            end
+            writeInteger("[timeofday]", res)
+        end
+    end
+end
+
+todl = createTimer(nil)
+timer_onTimer(todl,TODLevels)
+timer_setInterval(todl, 1)
+timer_setEnabled(todl, true)
+
+[DISABLE]
+timer_setEnabled(todl, false)
+print "Story Mode timer disabled"
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"DISABLE RESET OOB"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+007FAA8C:
+nop
+nop
+nop
+
+[DISABLE]
+007FAA8C:
+fld dword ptr [ecx+68]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>473</ID>
+          <Description>"WRONG WAY RESPAWN DISABLE"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+nop
+nop
+nop
+nop
+nop
+nop
+
+originalcode:
+//fld dword ptr [esi+00002924]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+408915:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+408915:
+fld dword ptr [esi+00002924]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"TOD RANDOMIZER STRING SWAP"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+getLuaEngine().cbShowOnPrint.Checked=false
+getLuaEngine().hide()
+
+function DEC_HEX(IN)
+    local B,K,OUT,I,D=16,"0123456789ABCDEF","",0
+    while IN&gt;0 do
+        I=I+1
+        IN,D=math.floor(IN/B),math.mod(IN,B)+1
+        OUT=string.sub(K,D,D)..OUT
+    end
+    return OUT
+end
+
+function Split(s, delimiter)
+    result = {};
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match);
+    end
+    return result;
+end
+
+function AOBtoDEC(str)
+    split_string = Split(str, " ")
+    local hex = ""
+    for i=1,#split_string do
+        hex = hex .. split_string[#split_string+1-i]
+    end
+    return(tonumber(hex,16))
+end
+
+function hexByteString(addressdec)
+    local decByteString = table.concat(readBytes(addressdec,4,true),' ')
+    local hexByteS = decByteString:gsub('%S+',function (c) return string.format('%02X',c) end)
+    return(hexByteS)
+end
+
+local addressStart = "F0000000" --First Vehicle of Customization Template
+local addressEnd = "FFFFFFFF" --Last Vehicle of Customization Template
+
+[ENABLE]
+
+local AOB = "4D 41 4C 00 52 45 41 4C 49 53 54 49 43 00 53 45 4C 45 43 54 20 41 20 50 4C 41 59 4C 49 53 54 00"
+local MyMemscan = createMemScan()
+memscan_returnOnlyOneResult(MyMemscan, true)
+memscan_firstScan(MyMemscan,soExactValue,vtByteArray,0,AOB,"",addressStart,addressEnd,"*X*W*C",0,"",true,true,false,false)
+memscan_waitTillDone(MyMemscan)
+local address = memscan_getOnlyResult(MyMemscan) --Returns the address in integer format
+if address ~= nil then
+    local string_end = {0x00}
+    writeString(address+0x20,"TOD RANDOMIZER")
+    writeBytes(address+0x2E,string_end)
+    print "String Swap Complete Complete!"
+else
+    print "String Swap Failed!"
+end
+
+
+[DISABLE]
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1077</ID>
+      <Description>"ForceNightVisEnv"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+getLuaEngine().cbShowOnPrint.Checked=false
+getLuaEngine().hide()
+addresslist = getAddressList()
+CheatEntry = addresslist_getMemoryRecordByDescription(addresslist,[[CustomNightVisEnv]])
+CheatEntry_2 = addresslist_getMemoryRecordByDescription(addresslist,[[STORY MODE RANDOMIZER]])
+CheatEntry_3 = addresslist_getMemoryRecordByDescription(addresslist,[[DISABLE RESET OOB]])
+CheatEntry_4 = addresslist_getMemoryRecordByDescription(addresslist,[[WRONG WAY RESPAWN DISABLE]])
+[ENABLE]
+print "Story Mode timer enabled"
+function NightVisEnv()
+    memoryrecord_unfreeze(CheatEntry_2)
+    if readPointer("[timeofday]") ~= nil then
+        local guid = getAddress("[timeofday]")-0x68
+        if readInteger(guid) == 2702358496 then --Get Outta San Francisco
+            writeInteger("[timeofday]", 0)
+            memoryrecord_freeze(CheatEntry)
+        elseif readInteger(guid) == 2494877324 then --Las Vegas East A
+            writeInteger("[timeofday]", 3)
+            memoryrecord_freeze(CheatEntry)
+        elseif readInteger(guid) == 1080972529 then --New Jersey
+            memoryrecord_freeze(CheatEntry_3) --WE DISABLE OOB RESET
+            memoryrecord_freeze(CheatEntry_4) --WE DISABLE WRONG WAY RESET
+            writeInteger("[timeofday]", 4)
+        else
+            if readInteger(getAddress(readInteger("[sequenceHook]"))+0x2B) ~= 1095981390 then
+               memoryrecord_unfreeze(CheatEntry)
+            else
+               memoryrecord_freeze(CheatEntry) --NYSAM CUTSCENE
+            end
+            memoryrecord_unfreeze(CheatEntry_3) --WE DISABLE OOB RESET
+            memoryrecord_unfreeze(CheatEntry_4) --WE DISABLE WRONG WAY RESET
+            writeInteger("[timeofday]", 4)
+        end
+    end
+end
+
+nvs = createTimer(nil)
+timer_onTimer(nvs,NightVisEnv)
+timer_setInterval(nvs, 1)
+timer_setEnabled(nvs, true)
+
+[DISABLE]
+timer_setEnabled(nvs, false)
+memoryrecord_unfreeze(CheatEntry)
+memoryrecord_freeze(CheatEntry_2)
+memoryrecord_unfreeze(CheatEntry_3) --WE DISABLE OOB RESET
+memoryrecord_unfreeze(CheatEntry_4) --WE DISABLE WRONG WAY RESET
+print "Story Mode timer disabled"
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>118</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1076</ID>
+      <Description>"Las Vegas East A VisEnv Crash Bypass"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+008E5134:
+nop
+nop
+nop
+nop
+nop
+008E513C:
+nop
+nop
+nop
+nop
+nop
+008E5147:
+nop
+nop
+nop
+nop
+nop
+
+[DISABLE]
+008E5134:
+movss xmm0,[edi+58]
+008E513C:
+movss xmm1,[edi+50]
+008E5147:
+movss xmm0,[edi+54]
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>118</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>673</ID>
+      <Description>"CustomNightVisEnv"</Description>
+      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>661</ID>
+          <Description>"World Render Light Intensity"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+lea ebx,[edx]
+mov [ebx],(float)0.5
+fld dword ptr [ebx]
+fstp dword ptr [eax+18]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+18]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1E3B13B:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1E3B13B:
+fld dword ptr [edx]
+fstp dword ptr [eax+18]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>666</ID>
+          <Description>"Light Exposure Intensity"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+lea ebx,[edx]
+mov [ebx],(float)7.5
+fld dword ptr [ebx]
+fstp dword ptr [eax+5C]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+5C]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F620B8:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F620B8:
+fld dword ptr [edx]
+fstp dword ptr [eax+5C]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>667</ID>
+          <Description>"HeadlightCondition"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+lea ebx,[edx+000000D0]
+mov [ebx],(int)1
+mov edx,[ebx]
+pop ebx
+
+originalcode:
+//mov edx,[edx+000000D0]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F620E8:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F620E8:
+mov edx,[edx+000000D0]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>671</ID>
+          <Description>"SkyBrightnessScale"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+mov ebx,(float)0.25
+mov [edx],ebx
+fld dword ptr [edx]
+fstp dword ptr [eax+34]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+34]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F63073:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F63073:
+fld dword ptr [edx]
+fstp dword ptr [eax+34]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>669</ID>
+          <Description>"SunRotationX"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+mov ebx,(float)0
+mov [edx],ebx
+fld dword ptr [edx]
+fstp dword ptr [eax+58]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+58]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F620B0:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F620B0:
+fld dword ptr [edx]
+fstp dword ptr [eax+58]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>670</ID>
+          <Description>"SunRotationY"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+mov ebx,(float)0
+mov [edx],ebx
+fld dword ptr [edx]
+fstp dword ptr [eax+54]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+54]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F620A8:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F620A8:
+fld dword ptr [edx]
+fstp dword ptr [eax+54]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>668</ID>
+          <Description>"TimeOfDayType"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+lea ebx,[edx+000000B0]
+mov [ebx],(int)1
+mov edx,[ebx]
+pop ebx
+
+originalcode:
+//mov edx,[edx+000000B0]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F6209C:
+jmp newmem
+nop
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F6209C:
+mov edx,[edx+000000B0]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>672</ID>
+          <Description>"SunSize"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+mov ebx,(float)-10
+mov [edx],ebx
+fld dword ptr [edx]
+fstp dword ptr [eax+3C]
+pop ebx
+
+originalcode:
+//fld dword ptr [edx]
+//fstp dword ptr [eax+3C]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F63087:
+jmp newmem
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F63087:
+fld dword ptr [edx]
+fstp dword ptr [eax+3C]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>694</ID>
+          <Description>"SunColor"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+push ebx
+push edi
+push ecx
+lea ebx,[edx] //x
+lea edi,[edx+4] //y
+lea ecx,[edx+8] //z
+mov [ebx],(float)0
+mov [edi],(float)0
+mov [ecx],(float)0
+movq xmm0,[edx]
+mov eax,[esp+04]
+pop ecx
+pop edi
+pop ebx
+
+originalcode:
+//movq xmm0,[edx]
+//mov eax,[esp+04]
+
+exit:
+jmp returnhere
+
+"Need for Speed The Run.exe"+1F62032:
+jmp newmem
+nop 3
+returnhere:
+
+[DISABLE]
+dealloc(newmem)
+"Need for Speed The Run.exe"+1F62032:
+movq xmm0,[edx]
+mov eax,[esp+04]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
